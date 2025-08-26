@@ -1,35 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { Suspense } from 'react';
 
-function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+// Remote-Module per MF: alias/exposedPath
+const NewsApp = React.lazy(() => import('newsService/App'));
+const GradeApp = React.lazy(() => import('gradeService/App'));
+
+export default function App() {
+    return (
+        <div style={{ padding: 16 }}>
+            <h1>Root UI (Host)</h1>
+
+            <section style={{ marginTop: 16 }}>
+                <h2>News</h2>
+                <Suspense fallback={<div>Loading News…</div>}>
+                    <NewsApp />
+                </Suspense>
+            </section>
+
+            <section style={{ marginTop: 16 }}>
+                <h2>Grades</h2>
+                <Suspense fallback={<div>Loading Grades…</div>}>
+                    <GradeApp />
+                </Suspense>
+            </section>
+        </div>
+    );
 }
 
-export default App
