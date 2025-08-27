@@ -1,0 +1,7 @@
+{
+  "imports": {
+    "@agile-software-engineering/news": "http://localhost:5186/singleSpa.js",
+    "@agile-software-engineering/grades": "http://localhost:5185/singleSpa.js"
+  }
+}
+

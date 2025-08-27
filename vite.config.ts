@@ -1,39 +1,28 @@
-// vite.config.ts (Host)
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { federation } from '@module-federation/vite'
+import vitePluginSingleSpa from "vite-plugin-single-spa";
+
 
 export default defineConfig({
+    server: { port: 5170 },
     base: '/',
-    plugins: [
-        react(),
-        federation({
-            name: 'root_ui',
-            manifest: true,
-            remotes: {
-                newsService: { type: 'module', name: 'newsService', entry: 'http://localhost:5176/remoteEntry.js' },
-                gradeService:{ type: 'module', name: 'gradeService', entry: 'http://localhost:5175/remoteEntry.js' },
+    plugins: [react(),
+        vitePluginSingleSpa({
+            type: "root",
+            importMaps: {
+                // Wähle EINE Schreibweise – hier mit großem M wie in der Doku/Defaults:
+                dev:   ["src/importMap.dev.json", "src/importMap.shared.json"],
+                build: ["src/importMap.json",     "src/importMap.shared.json"],
+                type: "importmap", // explizit
             },
-            shared: {
-                react: { singleton: true, requiredVersion: '^19.0.0' },
-                'react-dom': { singleton: true, requiredVersion: '^19.0.0' },
-                'react-dom/client': { singleton: true, requiredVersion: '^19.0.0' },
-            },
-        }),
-    ],
-    resolve: {
-        dedupe: ['react','react-dom'],
-        conditions: ['browser','development'],
-    },
-    optimizeDeps: {
-        // nichts rund um MF vor-optimieren lassen
-        exclude: ['@module-federation/runtime', '@module-federation/runtime-tools'],
-    },
+            // Debug-Ausgaben des Plugins (schreiben in die Konsole/Log-Datei)
+            logging: { incomingConfig: true, config: true },
+            // IMO ist optional – schadet nicht
+            imo: "4.2.0",
+            imoUi: { variant: "full", buttonPos: "bottom-right" },
+        }),],
     build: {
         target: 'chrome89',
         modulePreload: false,
-        commonjsOptions: {
-            transformMixedEsModules: true,
-        },
     },
 })
