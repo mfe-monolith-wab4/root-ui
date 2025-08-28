@@ -19,6 +19,7 @@ jobs:
           name: build-${{ github.run_id }}
           path: dist
   containerize:
+    needs: build
     runs-on: ubuntu-latest
     outputs:
       digest: ${{ steps.build.outputs.digest }}
