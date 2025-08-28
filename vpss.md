@@ -71,8 +71,8 @@
     modulePreload: false,
     rollupOptions: { onwarn: [Function: onwarn] { [length]: 2, [name]: 'onwarn' } }
   },
-  esbuild: { jsx: 'automatic', jsxImportSource: undefined },
   optimizeDeps: {
+    force: undefined,
     esbuildOptions: { jsx: 'automatic' },
     include: [
       'react',
@@ -82,6 +82,7 @@
       [length]: 4
     ]
   },
+  esbuild: { jsx: 'automatic', jsxImportSource: undefined },
   resolve: { dedupe: [ 'react', 'react-dom', [length]: 2 ] }
 }
 
