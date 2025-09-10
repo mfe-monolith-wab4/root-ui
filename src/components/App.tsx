@@ -3,42 +3,34 @@ import { MfeSlot } from './MfeSlot'
 import { navigateToUrl } from 'single-spa'
 
 const App = () => {
-
-    const pathname = window.location.pathname
-
-    const linkStyle = (active: boolean): React.CSSProperties => ({
-        textDecoration: "none",
-        color: active ? "#000" : "#555",
-        fontWeight: active ? "bold" : "normal",
-        fontSize: "30px",
-    })
-
     return (
         <div className="app-shell">
             <nav
                 className="navbar"
-                style={{
-                    display: "flex",
-                    alignItems: "flex-end",
-                    gap: "12px",
-                    padding: "10px 20px",
-                    borderBottom: "1px solid #ddd",
-                    background: "#fafafa",
-                }}
+                style={{ display: 'flex',alignItems:"flex-end", gap: '30px', padding: '10px 20px', borderBottom: '1px solid #ddd', background: '#fafafa' }}
             >
                 SMS Prototype - Root UI
 
+                {/* einfache SPA-Links über single-spa */}
                 <a
                     href="/"
                     onClick={navigateToUrl}
-                    style={linkStyle(pathname === "/" || pathname.startsWith("/news"))}
+                    style={{
+                        textDecoration: "none",
+                        color: "#000",
+                        fontSize: "30px",
+                    }}
                 >
                     News
                 </a>
                 <a
                     href="/grades"
                     onClick={navigateToUrl}
-                    style={linkStyle(pathname.startsWith("/grades"))}
+                    style={{
+                        textDecoration: "none",
+                        color: "#000",
+                        fontSize: "30px",
+                    }}
                 >
                     Grades
                 </a>
