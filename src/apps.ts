@@ -1,14 +1,5 @@
-// apps.ts (dein Default-Array)
+// src/apps.ts
 export default [
-    {
-        name: '@agile-software-engineering/news',
-        // nur Startseite oder optional /news
-        activeWhen: (loc: Location) => loc.pathname === '/' || loc.pathname.startsWith('/news'),
-        mountWhere: '#mfe-news',
-    },
-    {
-        name: '@agile-software-engineering/grades',
-        activeWhen: (loc: Location) => loc.pathname.startsWith('/grades'),
-        mountWhere: '#mfe-grades',
-    },
-] as const
+    { name: "@agile-software-engineering/News",   basename: "/news"   },
+    { name: "@agile-software-engineering/Grades", basename: "/grades" },
+] as const;

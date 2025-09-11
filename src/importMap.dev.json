@@ -1,6 +1,6 @@
 {
   "imports": {
-    "@agile-software-engineering/news": "https://news.micro.wab4.jf-homelab.de/singleSpa.js",
-    "@agile-software-engineering/grades": "https://grades.micro.wab4.jf-homelab.de/singleSpa.js"
+    "@agile-software-engineering/News": "https://news.micro.wab4.jf-homelab.de/singleSpa.js",
+    "@agile-software-engineering/Grades": "https://grades.micro.wab4.jf-homelab.de/singleSpa.js"
   }
 }
