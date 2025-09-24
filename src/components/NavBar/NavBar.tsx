@@ -1,4 +1,4 @@
-import {useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 
 function NavBar() {
@@ -17,28 +17,22 @@ function NavBar() {
             SMS Prototype - Root UI
 
             {/* einfache SPA-Links über single-spa */}
-            <a
-                href="/news"
-                onClick={useNavigate}
-                style={{
-                    textDecoration: "none",
-                    color: "#000",
-                    fontSize: "30px",
-                }}
-            >
+            <Link to="/news" style={{
+                textDecoration: "none",
+                color: "#000",
+                fontSize: "30px",
+            }} >
                 News
-            </a>
-            <a
-                href="/grades"
-                onClick={useNavigate}
-                style={{
-                    textDecoration: "none",
-                    color: "#000",
-                    fontSize: "30px",
-                }}
-            >
+            </Link>
+
+            <Link to="/grades" style={{
+                textDecoration: "none",
+                color: "#000",
+                fontSize: "30px",
+            }}>
                 Grades
-            </a>
+            </Link>
+
         </nav>
     );
 }
