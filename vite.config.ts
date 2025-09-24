@@ -19,5 +19,10 @@ export default defineConfig({
     build: {
         target: 'chrome89',
         modulePreload: false,
-    },
+        rollupOptions: {
+            // React wird extern geliefert (Import-Map in root)
+            external: ['react', 'react-dom', 'react-dom/client'],
+            output: { format: 'esm' },
+        },
+    }
 })
