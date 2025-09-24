@@ -1,7 +1,7 @@
 {
   "imports": {
-    "react": "/vendor/react-18.3.1.js",
-    "react-dom": "/vendor/react-18.3.1-dom.js",
-    "react-dom/client": "/vendor/react-18.3.1-dom-client.js"
+    "react": "https://esm.sh/react@18.3.1",
+    "react-dom": "https://esm.sh/react-dom@18.3.1",
+    "react-dom/client": "https://esm.sh/react-dom@18.3.1/client"
   }
 }
